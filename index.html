@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIPHER LUXE | Haute Event Architecture</title>
     
+    <!-- Ultra Luxe Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -89,7 +90,7 @@
         .inquiry-form input, .inquiry-form textarea { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; color: #fff; font-family: inherit; outline: none; }
         .btn-submit { background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold)); color: #000; padding: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; border: none; cursor: pointer; }
         
-        .whatsapp-float { position: fixed; bottom: 35px; right: 35px; z-index: 100; background: #25d366; color: #fff; padding: 18px 28px; border-radius: 50px; font-weight: 700; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .whatsapp-float { position: fixed; bottom: 35px; right: 35px; z-index: 100; background: #25d366; color: #fff; padding: 18px 28px; border-radius: 50px; font-weight: 700; box-shadow: 0 15px 35px rgba(0,0,0,0.5); font-size: 0.85rem; }
         .site-footer { padding: 100px 0; text-align: center; border-top: 1px solid var(--glass-border); }
         .social-links { display: flex; justify-content: center; gap: 50px; margin-bottom: 40px; }
         .social-links a:hover { color: var(--luxury-gold); }
@@ -97,6 +98,7 @@
         @media (max-width: 900px) {
             .gallery-grid { display: flex; flex-direction: column; }
             .item-lg, .item-sm, .item-md { height: 350px; }
+            .main-nav { display: none; }
         }
     </style>
 </head>
@@ -156,4 +158,53 @@
                     <div class="img-overlay"><span>DJ Midnight Experience</span></div>
                 </div>
                 <!-- Gala Design -->
-                <
+                <div class="gallery-item item-md">
+                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=800" alt="Gala Party">
+                    <div class="img-overlay"><span>Anniversary Gala Design</span></div>
+                </div>
+                <!-- FIXED HOME DECOR IMAGE -->
+                <div class="gallery-item item-md">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" alt="Home Decor">
+                    <div class="img-overlay"><span>Home Decoration Art</span></div>
+                </div>
+            </div>
+        </div></section>
+
+        <section id="inquiry" class="inquiry"><div class="container">
+            <h2 class="section-title">Secure An Inquiry</h2>
+            <form class="inquiry-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="4" placeholder="Detail the nature of your request"></textarea>
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+            </form>
+        </div></section>
+    </main>
+
+    <footer id="footer" class="site-footer"><div class="container">
+        <div class="social-links">
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">X (Twitter)</a>
+        </div>
+        <p style="font-size:0.65rem; color:var(--text-muted); letter-spacing:0.2em;">© 2024 CIPHER LUXE. ALL RIGHTS RESERVED.</p>
+    </div></footer>
+
+    <script>
+        // FORCED OPEN SCRIPT
+        function openShutter() {
+            const shutter = document.getElementById('aperture-shutter');
+            if (shutter && !shutter.classList.contains('open')) {
+                shutter.classList.add('open');
+                setTimeout(() => {
+                    const services = document.getElementById('services');
+                    window.scrollTo({ top: services.offsetTop - 80, behavior: 'smooth' });
+                    setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 3000);
+                }, 1500);
+            }
+        }
+        window.addEventListener('load', () => setTimeout(openShutter, 1500));
+        setTimeout(openShutter, 5000); // Safety trigger
+    </script>
+</body>
+</html>
