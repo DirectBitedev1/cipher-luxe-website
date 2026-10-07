@@ -32,6 +32,7 @@
       --font-display: 'Cinzel', serif;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
       --container: 1240px;
+      --accent-metal: var(--luxury-gold);
     }
 
     * {
@@ -167,7 +168,6 @@
     .main-nav a:hover { color: var(--luxury-gold); }
     .main-nav a:hover::after { width: 100%; }
 
-    /* Ultra Luxe Button Base */
     .btn-luxe {
       display: inline-flex;
       align-items: center;
@@ -180,6 +180,7 @@
       letter-spacing: 0.2em;
       position: relative;
       overflow: hidden;
+      z-index: 1;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-luxe-primary {
@@ -221,24 +222,23 @@
       padding-top: 100px;
     }
 
-    /* Video Core Backing Engine */
     .hero-video-wrapper {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
+      background: #060307;
     }
     .hero-video-wrapper video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.24;
-      transform: scale(1.05);
+      opacity: 0.35;
+      filter: contrast(110%) brightness(85%);
       transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Ambient Liquid Canvas */
     #liquid-ambient-canvas {
       position: absolute;
       inset: 0;
@@ -247,12 +247,11 @@
       pointer-events: none;
     }
 
-    /* Ultra-Luxe Contrast Tint Overlay Matrix */
     .hero-tint-matrix {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: linear-gradient(to bottom, rgba(7,4,8,0.4), var(--bg) 95%);
+      background: linear-gradient(to bottom, rgba(7,4,8,0.2), var(--bg) 95%);
       pointer-events: none;
     }
 
@@ -266,12 +265,11 @@
       width: 100%;
     }
 
-    /* Dynamic Color Tone Spaces */
+    /* Vibe Color Configuration Mapping rules */
     [data-active-luxe="dj"] { --accent-metal: var(--luxury-rosegold); }
     [data-active-luxe="live"] { --accent-metal: var(--luxury-gold); }
     [data-active-luxe="gala"] { --accent-metal: var(--luxury-platinum); }
 
-    /* Typography Entrance States */
     .hero-copy {
       animation: maskUpReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -332,18 +330,17 @@
       margin-top: 40px;
     }
 
-    /* Ambient HUD State Switcher */
     .hud-atmosphere-selector {
       position: absolute;
-      top: 0;
+      top: -120px;
       right: 0;
       z-index: 40;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      background: rgba(12, 8, 14, 0.4);
+      background: rgba(12, 8, 14, 0.65);
       padding: 24px 16px;
-      border-radius: 0 0 30px 30px;
+      border-radius: 24px;
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(30px);
     }
@@ -361,3 +358,7 @@
       border: 1px solid transparent;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .hud-trigger .orbit-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
