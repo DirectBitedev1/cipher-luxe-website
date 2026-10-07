@@ -76,7 +76,13 @@
         .gallery-item:hover .img-overlay { opacity: 1; }
         .img-overlay span { font-family: var(--font-display); color: var(--luxury-gold); letter-spacing: 0.2em; text-transform: uppercase; }
 
-        /* WHATSAPP & FOOTER */
+        /* CONTACT & WHATSAPP */
+        .inquiry { padding: 100px 0; background: var(--bg-matte); }
+        .inquiry-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .inquiry-form input, .inquiry-form textarea { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; color: #fff; font-family: inherit; outline: none; }
+        .inquiry-form input:focus { border-color: var(--luxury-gold); }
+        .btn-submit { background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold)); color: #000; padding: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; border: none; cursor: pointer; }
+        
         .whatsapp-float { position: fixed; bottom: 35px; right: 35px; z-index: 100; background: #25d366; color: #fff; padding: 18px 28px; border-radius: 50px; font-weight: 700; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
         .site-footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--glass-border); }
         .social-links { display: flex; justify-content: center; gap: 50px; margin-bottom: 30px; }
@@ -94,50 +100,58 @@
 
     <header class="site-header"><div class="container"><nav class="nav-wrap">
         <div class="brand">CIPHER LUXE</div>
-        <div class="main-nav"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#footer">Contact</a></div>
+        <div class="main-nav"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#inquiry">Inquiry</a></div>
     </nav></div></header>
 
     <main>
         <section class="hero"><div class="container">
+            <div style="font-size:0.75rem; letter-spacing:0.4em; color:var(--luxury-gold); text-transform:uppercase; margin-bottom:20px;">Event Architecture</div>
             <h1>Designing <span>Eternal Moments</span></h1>
         </div></section>
 
         <section id="services" class="services"><div class="container">
             <h2 class="section-title">Luxury Curation</h2>
             <div class="service-grid">
-                <div class="service-card"><h3>Baby Shower</h3><p>Elegant and sophisticated themes for the newest arrival.</p></div>
+                <div class="service-card"><h3>Baby Shower</h3><p>Sophisticated themes for the newest arrival.</p></div>
                 <div class="service-card"><h3>DJ Midnight</h3><p>Elite immersive soundscapes for the late-night discography.</p></div>
-                <div class="service-card"><h3>Wedding Decor</h3><p>Haute couture floral and structural architecture for ceremonies.</p></div>
-                <div class="service-card"><h3>Live Singing</h3><p>Orchestrated cinematic vocal sets for formal gatherings.</p></div>
+                <div class="service-card"><h3>Wedding Decor</h3><p>Haute couture floral architecture for ceremonies.</p></div>
+                <div class="service-card"><h3>Live Singing</h3><p>Orchestrated cinematic vocal sets.</p></div>
                 <div class="service-card"><h3>Corporate Party</h3><p>Strategic event design for high-profile summits.</p></div>
-                <div class="service-card"><h3>Lighting Design</h3><p>Advanced atmospheric illumination and projection mapping.</p></div>
+                <div class="service-card"><h3>Home Decoration</h3><p>Transforming residences into bespoke art.</p></div>
+                <div class="service-card"><h3>Lighting Design</h3><p>Advanced atmospheric illumination.</p></div>
             </div>
         </div></section>
 
         <section id="portfolio" class="gallery"><div class="container">
             <h2 class="section-title">Visual Anthology</h2>
             <div class="gallery-grid">
-                <!-- Baby Shower -->
                 <div class="gallery-item item-lg">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200" alt="Baby Shower">
-                    <div class="img-overlay"><span>Luxury Baby Shower Curation</span></div>
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200" alt="Baby Shower">
+                    <div class="img-overlay"><span>Baby Shower Curation</span></div>
                 </div>
-                <!-- DJ & Lighting -->
                 <div class="gallery-item item-sm">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt="DJ Party">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800" alt="DJ Party">
                     <div class="img-overlay"><span>DJ Midnight Experience</span></div>
                 </div>
-                <!-- Anniversary/Gala -->
                 <div class="gallery-item item-md">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800" alt="Gala Party">
+                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=800" alt="Gala Party">
                     <div class="img-overlay"><span>Anniversary Gala Design</span></div>
                 </div>
-                <!-- Home Decoration -->
                 <div class="gallery-item item-md">
-                    <img src="https://images.unsplash.com/photo-1522673607200-1c44c79c8366?q=80&w=800" alt="Home Decor">
-                    <div class="img-overlay"><span>Architectural Home Curation</span></div>
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800" alt="Event Lighting">
+                    <div class="img-overlay"><span>Atmospheric Lighting</span></div>
                 </div>
             </div>
+        </div></section>
+
+        <section id="inquiry" class="inquiry"><div class="container">
+            <h2 class="section-title">Secure An Inquiry</h2>
+            <form class="inquiry-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="4" placeholder="Event Details"></textarea>
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+            </form>
         </div></section>
     </main>
 
