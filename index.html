@@ -4,139 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIPHER LUXE | Haute Event Architecture</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #070408;
-            --bg-matte: #0c080e;
-            --glass-obsidian: rgba(12, 8, 14, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.04);
-            --text-pure: #ffffff;
-            --text-muted: #9e93a7;
-            --text-dim: #5c5363;
-            --luxury-gold: #e2c995;
-            --luxury-gold-deep: #bfa36b;
-            --luxury-platinum: #e3e8f0;
-            --luxury-rosegold: #e8a2a2;
-            --font-display: 'Cinzel', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --container: 1240px;
+            --bg: #070408; --bg-matte: #0c080e; --text-pure: #ffffff; --text-muted: #9e93a7;
+            --luxury-gold: #e2c995; --glass-border: rgba(255, 255, 255, 0.05);
+            --font-display: 'Cinzel', serif; --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; background-color: var(--bg); }
-        body { font-family: var(--font-sans); background: var(--bg); color: var(--text-pure); line-height: 1.62; overflow-x: hidden; letter-spacing: -0.01em; }
-        a { color: inherit; text-decoration: none; }
+        body { background: var(--bg); color: var(--text-pure); font-family: var(--font-sans); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: min(1200px, 90%); margin: 0 auto; }
         
-        .container { width: min(var(--container), calc(100% - 48px)); margin: 0 auto; }
-
-        /* Cinematic Aperture Shutter */
-        #aperture-shutter {
-            position: fixed; inset: 0; background: #000; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-        }
+        /* Shutter */
+        #aperture-shutter { position: fixed; inset: 0; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; transition: 1.2s cubic-bezier(0.85, 0, 0.15, 1); }
         #aperture-shutter.open { transform: translateY(-100%); }
-        .shutter-logo {
-            font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.3em; color: var(--luxury-gold);
-            animation: pulseReveal 2.5s ease-in-out forwards;
+
+        /* Header */
+        .site-header { position: sticky; top: 0; z-index: 90; background: rgba(7,4,8,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        .brand { font-family: var(--font-display); letter-spacing: 0.3em; font-weight: 700; }
+        .main-nav a { margin-left: 30px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); transition: 0.3s; }
+        .main-nav a:hover { color: var(--luxury-gold); }
+
+        /* Sections */
+        .hero { padding: 120px 0 80px; text-align: center; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); margin: 20px 0; }
+        .hero span { display: block; font-style: italic; color: var(--luxury-gold); }
+
+        .services { padding: 100px 0; background: var(--bg-matte); }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .service-card { padding: 50px 40px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.01); transition: 0.5s; }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--luxury-gold); }
+        .service-card h3 { font-family: var(--font-display); color: var(--luxury-gold); margin-bottom: 10px; }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background: #25d366; color: #fff; padding: 15px 25px; border-radius: 50px;
+            font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+            display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.3s;
         }
-        @keyframes pulseReveal {
-            0% { opacity: 0; letter-spacing: 0.1em; filter: blur(8px); }
-            50% { opacity: 1; filter: blur(0); }
-            100% { opacity: 0; letter-spacing: 0.3em; }
+        .whatsapp-float:hover { transform: scale(1.05); background: #20ba5a; }
+
+        /* Footer & Socials */
+        .site-footer { padding: 80px 0; border-top: 1px solid var(--glass-border); text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; }
+        .social-links a { 
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; 
+            color: var(--text-muted); transition: 0.3s; 
         }
-
-        /* Architectural Header */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 90; border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(20px); background: rgba(7, 4, 8, 0.2); }
-        .nav-wrap { display: flex; align-items: center; justify-content: space-between; min-height: 100px; }
-        .brand { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
-        .brand-crest { width: 20px; height: 20px; border: 1px solid var(--luxury-gold); transform: rotate(45deg); position: relative; }
-        .brand-crest::after { content: ''; position: absolute; inset: 4px; background: var(--luxury-gold); }
-
-        .main-nav { display: flex; gap: 40px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
-        .main-nav a { position: relative; transition: 0.4s; }
-        .main-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--luxury-gold); transition: 0.4s; }
-        .main-nav a:hover { color: var(--text-pure); }
-        .main-nav a:hover::after { width: 100%; }
-
-        /* Hero Arena */
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 80px; }
-        .hero-tint { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(7,4,8,0.2), var(--bg)); z-index: 2; }
-        
-        .hero-copy { position: relative; z-index: 10; animation: revealUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes revealUp {
-            0% { opacity: 0; transform: translateY(50px); filter: blur(10px); }
-            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-
-        .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--luxury-gold); margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
-        .eyebrow::before { content: ''; width: 40px; height: 1px; background: currentColor; }
-
-        .hero-copy h1 { font-family: var(--font-display); font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 0.9; font-weight: 400; }
-        .hero-copy h1 span { display: block; font-weight: 900; font-style: italic; background: linear-gradient(to right, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .hero-copy p { max-width: 560px; color: var(--text-muted); font-size: 1.1rem; margin-top: 30px; font-weight: 300; }
-
-        /* Luxe Buttons */
-        .btn-luxe {
-            display: inline-flex; align-items: center; margin-top: 50px; padding: 18px 45px;
-            font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em;
-            background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold));
-            color: #000; position: relative; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn-luxe:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(226, 201, 149, 0.2); }
+        .social-links a:hover { color: var(--luxury-gold); }
+        .copyright { font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
     </style>
 </head>
 <body>
+    <div id="aperture-shutter"><div class="shutter-logo" style="font-family:var(--font-display); color:var(--luxury-gold);">CIPHER LUXE</div></div>
 
-    <div id="aperture-shutter">
-        <div class="shutter-logo">CIPHER LUXE</div>
-    </div>
+    <!-- WhatsApp Floating Action -->
+    <a href="https://wa.me/YOURNUMBERHERE" class="whatsapp-float" target="_blank">
+        <span>Enquiry via WhatsApp</span>
+    </a>
 
-    <header class="site-header">
-        <div class="container">
-            <nav class="nav-wrap">
-                <div class="brand">
-                    <div class="brand-crest"></div>
-                    CIPHER LUXE
-                </div>
-                <div class="main-nav">
-                    <a href="#philosophy">Philosophy</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#curation">Curation</a>
-                    <a href="#inquiry">Inquiry</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <header class="site-header"><div class="container"><nav class="nav-wrap">
+        <div class="brand">CIPHER LUXE</div>
+        <div class="main-nav"><a href="#services">Services</a><a href="#footer">Follow</a></div>
+    </nav></div></header>
 
     <main>
-        <section class="hero">
-            <div class="hero-tint"></div>
-            <div class="container">
-                <div class="hero-copy">
-                    <div class="eyebrow">Haute Event Architecture</div>
-                    <h1>Designing <span>Eternal Moments</span></h1>
-                    <p>We craft immersive, cinematic environments for global icons and discerning private clients. Experience the intersection of architecture and ephemeral art.</p>
-                    <a href="#inquiry" class="btn-luxe">Begin Exploration</a>
-                </div>
+        <section class="hero"><div class="container">
+            <h1>Designing <span>Eternal Moments</span></h1>
+        </div></section>
+
+        <section id="services" class="services"><div class="container">
+            <h2 style="text-align:center; margin-bottom:50px; font-family:var(--font-display); letter-spacing:0.3em;">CURATION</h2>
+            <div class="service-grid">
+                <div class="service-card"><h3>DJ Midnight</h3><p>Proprietary soundscapes.</p></div>
+                <div class="service-card"><h3>Live Singing</h3><p>Cinematic vocalists.</p></div>
+                <div class="service-card"><h3>Corporate Party</h3><p>Elite summits.</p></div>
+                <div class="service-card"><h3>Birthday Party</h3><p>Luxury celebrations.</p></div>
+                <div class="service-card"><h3>Home Decoration</h3><p>Art environments.</p></div>
+                <div class="service-card"><h3>Lighting Design</h3><p>Atmospheric projection.</p></div>
             </div>
-        </section>
+        </div></section>
     </main>
 
+    <footer id="footer" class="site-footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/YOUR_HANDLE" target="_blank">Instagram</a>
+                <a href="https://facebook.com/YOUR_PAGE" target="_blank">Facebook</a>
+                <a href="https://x.com/YOUR_X" target="_blank">X (Twitter)</a>
+            </div>
+            <p class="copyright">© 2024 CIPHER LUXE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Orchestrate the cinematic entrance
-            setTimeout(() => {
-                const shutter = document.getElementById('aperture-shutter');
-                if(shutter) shutter.classList.add('open');
-            }, 2200);
-        });
+        window.onload = () => setTimeout(() => document.getElementById('aperture-shutter').classList.add('open'), 1000);
     </script>
 </body>
 </html>
