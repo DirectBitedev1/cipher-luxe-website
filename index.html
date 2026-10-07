@@ -24,11 +24,12 @@
         img { max-width: 100%; height: auto; display: block; filter: grayscale(20%); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .container { width: min(var(--container), 92%); margin: 0 auto; }
 
-        /* HIGH QUALITY TRANSITION SHUTTER */
+        /* FIXED: CENTERED LUXURY SHUTTER */
         #aperture-shutter {
             position: fixed; inset: 0; background: #000; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: transform 1.5s cubic-bezier(0.9, 0, 0.1, 1);
+            text-align: center;
         }
         #aperture-shutter.open { transform: translateY(-100%); }
         .shutter-logo-large {
@@ -36,13 +37,20 @@
             color: var(--luxury-gold); text-transform: uppercase; font-weight: 900;
             letter-spacing: 0.1em; opacity: 0; transform: scale(0.95);
             animation: luxuryReveal 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            display: inline-block;
+        }
+        .shutter-subtext {
+            font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.8em;
+            text-transform: uppercase; margin-top: 20px; opacity: 0;
+            animation: fadeIn 1.5s ease-out 1.2s forwards;
         }
         @keyframes luxuryReveal {
             0% { opacity: 0; transform: scale(0.95); letter-spacing: 0.1em; filter: blur(10px); }
             100% { opacity: 1; transform: scale(1); letter-spacing: 0.4em; filter: blur(0); }
         }
+        @keyframes fadeIn { to { opacity: 1; } }
 
-        /* STICKY HEADER */
+        /* HEADER & NAVIGATION */
         .site-header { position: sticky; top: 0; z-index: 90; background: rgba(7,4,8,0.85); backdrop-filter: blur(25px); border-bottom: 1px solid var(--glass-border); }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 100px; }
         .brand { font-family: var(--font-display); letter-spacing: 0.3em; font-weight: 700; text-transform: uppercase; }
@@ -54,16 +62,15 @@
         .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; }
         .hero span { display: block; font-style: italic; color: var(--luxury-gold); font-weight: 900; }
 
-        /* SERVICES GRID */
+        /* SERVICES SECTION */
         .services { padding: 100px 0; background: var(--bg-matte); }
-        .section-title { font-family: var(--font-display); text-align: center; margin-bottom: 70px; letter-spacing: 0.4em; text-transform: uppercase; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { padding: 50px 40px; border: 1px solid var(--glass-border); transition: 0.5s; background: rgba(255,255,255,0.01); }
+        .section-title { font-family: var(--font-display); text-align: center; margin-bottom: 70px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 1.2rem; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .service-card { padding: 60px 45px; border: 1px solid var(--glass-border); transition: 0.5s; background: rgba(255,255,255,0.01); }
         .service-card:hover { transform: translateY(-10px); border-color: var(--luxury-gold); }
-        .service-card h3 { font-family: var(--font-display); color: var(--luxury-gold); margin-bottom: 15px; }
-        .service-card p { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
+        .service-card h3 { font-family: var(--font-display); color: var(--luxury-gold); margin-bottom: 20px; }
 
-        /* PORTFOLIO GALLERY */
+        /* FIXED PORTFOLIO GRID */
         .gallery { padding: 100px 0; }
         .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px; }
         .gallery-item { position: relative; overflow: hidden; border: 1px solid var(--glass-border); }
@@ -72,20 +79,20 @@
         .item-md { grid-column: span 6; height: 450px; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
-        .img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,4,8,0.9), transparent); display: flex; align-items: flex-end; padding: 30px; opacity: 0; transition: 0.4s; }
+        .img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,4,8,0.9), transparent); display: flex; align-items: flex-end; padding: 40px; opacity: 0; transition: 0.5s; }
         .gallery-item:hover .img-overlay { opacity: 1; }
         .img-overlay span { font-family: var(--font-display); color: var(--luxury-gold); letter-spacing: 0.2em; text-transform: uppercase; }
 
-        /* CONTACT & WHATSAPP */
+        /* INQUIRY & WHATSAPP */
         .inquiry { padding: 100px 0; background: var(--bg-matte); }
-        .inquiry-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        .inquiry-form input, .inquiry-form textarea { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; color: #fff; font-family: inherit; outline: none; }
-        .inquiry-form input:focus { border-color: var(--luxury-gold); }
-        .btn-submit { background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold)); color: #000; padding: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; border: none; cursor: pointer; }
+        .inquiry-form { max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px; }
+        .inquiry-form input, .inquiry-form textarea { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; color: #fff; font-family: inherit; outline: none; }
+        .btn-submit { background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold)); color: #000; padding: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; border: none; cursor: pointer; }
         
-        .whatsapp-float { position: fixed; bottom: 35px; right: 35px; z-index: 100; background: #25d366; color: #fff; padding: 18px 28px; border-radius: 50px; font-weight: 700; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
-        .site-footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--glass-border); }
-        .social-links { display: flex; justify-content: center; gap: 50px; margin-bottom: 30px; }
+        .whatsapp-float { position: fixed; bottom: 35px; right: 35px; z-index: 100; background: #25d366; color: #fff; padding: 18px 28px; border-radius: 50px; font-weight: 700; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .site-footer { padding: 100px 0; text-align: center; border-top: 1px solid var(--glass-border); }
+        .social-links { display: flex; justify-content: center; gap: 50px; margin-bottom: 40px; }
+        .social-links a:hover { color: var(--luxury-gold); }
 
         @media (max-width: 900px) {
             .gallery-grid { display: flex; flex-direction: column; }
@@ -95,83 +102,58 @@
 </head>
 <body>
 
-    <div id="aperture-shutter"><div class="shutter-logo-large">CIPHER LUXE</div></div>
+    <!-- FIXED CENTERED TRANSITION -->
+    <div id="aperture-shutter">
+        <div class="shutter-content">
+            <div class="shutter-logo-large">CIPHER LUXE</div>
+            <div class="shutter-subtext">Haute Event Architecture</div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP ENQUIRY -->
     <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float" target="_blank">WHATSAPP ENQUIRY</a>
 
     <header class="site-header"><div class="container"><nav class="nav-wrap">
         <div class="brand">CIPHER LUXE</div>
-        <div class="main-nav"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#inquiry">Inquiry</a></div>
+        <div class="main-nav">
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#inquiry">Inquiry</a>
+            <a href="#footer">Follow</a>
+        </div>
     </nav></div></header>
 
     <main>
         <section class="hero"><div class="container">
-            <div style="font-size:0.75rem; letter-spacing:0.4em; color:var(--luxury-gold); text-transform:uppercase; margin-bottom:20px;">Event Architecture</div>
+            <div style="font-size:0.75rem; letter-spacing:0.4em; color:var(--luxury-gold); text-transform:uppercase; margin-bottom:20px;">Private Curation</div>
             <h1>Designing <span>Eternal Moments</span></h1>
         </div></section>
 
         <section id="services" class="services"><div class="container">
             <h2 class="section-title">Luxury Curation</h2>
             <div class="service-grid">
-                <div class="service-card"><h3>Baby Shower</h3><p>Sophisticated themes for the newest arrival.</p></div>
-                <div class="service-card"><h3>DJ Midnight</h3><p>Elite immersive soundscapes for the late-night discography.</p></div>
-                <div class="service-card"><h3>Wedding Decor</h3><p>Haute couture floral architecture for ceremonies.</p></div>
+                <div class="service-card"><h3>Baby Shower</h3><p>Elegant themes for the newest arrival.</p></div>
+                <div class="service-card"><h3>DJ Midnight</h3><p>Elite immersive late-night soundscapes.</p></div>
+                <div class="service-card"><h3>Wedding Decor</h3><p>Haute couture structural architecture.</p></div>
                 <div class="service-card"><h3>Live Singing</h3><p>Orchestrated cinematic vocal sets.</p></div>
-                <div class="service-card"><h3>Corporate Party</h3><p>Strategic event design for high-profile summits.</p></div>
+                <div class="service-card"><h3>Corporate Party</h3><p>Strategic event design for global summits.</p></div>
                 <div class="service-card"><h3>Home Decoration</h3><p>Transforming residences into bespoke art.</p></div>
-                <div class="service-card"><h3>Lighting Design</h3><p>Advanced atmospheric illumination.</p></div>
+                <div class="service-card"><h3>Lighting Design</h3><p>Atmospheric projection mapping.</p></div>
             </div>
         </div></section>
 
         <section id="portfolio" class="gallery"><div class="container">
             <h2 class="section-title">Visual Anthology</h2>
             <div class="gallery-grid">
+                <!-- Baby Shower -->
                 <div class="gallery-item item-lg">
                     <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200" alt="Baby Shower">
                     <div class="img-overlay"><span>Baby Shower Curation</span></div>
                 </div>
+                <!-- FIXED DJ IMAGE -->
                 <div class="gallery-item item-sm">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800" alt="DJ Party">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800" alt="DJ Midnight">
                     <div class="img-overlay"><span>DJ Midnight Experience</span></div>
                 </div>
-                <div class="gallery-item item-md">
-                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=800" alt="Gala Party">
-                    <div class="img-overlay"><span>Anniversary Gala Design</span></div>
-                </div>
-                <div class="gallery-item item-md">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800" alt="Event Lighting">
-                    <div class="img-overlay"><span>Atmospheric Lighting</span></div>
-                </div>
-            </div>
-        </div></section>
-
-        <section id="inquiry" class="inquiry"><div class="container">
-            <h2 class="section-title">Secure An Inquiry</h2>
-            <form class="inquiry-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <textarea rows="4" placeholder="Event Details"></textarea>
-                <button type="submit" class="btn-submit">Submit Inquiry</button>
-            </form>
-        </div></section>
-    </main>
-
-    <footer id="footer" class="site-footer"><div class="container">
-        <div class="social-links">
-            <a href="#">Instagram</a><a href="#">Facebook</a><a href="#">X (Twitter)</a>
-        </div>
-        <p style="font-size:0.7rem; color:var(--text-muted);">© 2024 CIPHER LUXE. PRIVATE & CONFIDENTIAL.</p>
-    </div></footer>
-
-    <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('aperture-shutter').classList.add('open');
-                setTimeout(() => {
-                    window.scrollTo({ top: document.getElementById('services').offsetTop - 80, behavior: 'smooth' });
-                    setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 3000);
-                }, 1500);
-            }, 2800);
-        });
-    </script>
-</body>
-</html>
+                <!-- Gala Design -->
+                <
