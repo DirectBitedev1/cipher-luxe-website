@@ -1,482 +1,1062 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cipher Luxe | Premium Event Planning</title>
-    <meta
-      name="description"
-      content="Cipher Luxe creates iconic moments for corporate parties, DJ nights, birthday celebrations, and baby showers with elevated style and seamless planning."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand" aria-label="Cipher Luxe home">
-          <span class="brand-mark">C</span>
-          <span class="brand-text">Cipher Luxe</span>
-        </a>
+:root {
+  --bg: #120b15;
+  --bg-soft: #191321;
+  --panel: rgba(32, 22, 35, 0.88);
+  --panel-strong: #1d1625;
+  --card: rgba(255, 255, 255, 0.04);
+  --muted: #d9cde7;
+  --text: #f7f3ff;
+  --soft: #bfa9d8;
+  --primary: #e9778f;
+  --primary-strong: #ff9b70;
+  --gold: #f2d58d;
+  --green: #76e2b7;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --container: 1180px;
+}
 
-        <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#events">Events</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#packages">Packages</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#contact">Contact</a>
-        </nav>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        <a href="#contact" class="btn btn-primary nav-button">Book an Event</a>
+html {
+  scroll-behavior: smooth;
+}
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
+body {
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(233, 119, 143, 0.18), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(255, 155, 112, 0.12), transparent 22%),
+    linear-gradient(180deg, #100b12 0%, #17131d 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-grid">
-          <div class="hero-copy scroll-reveal">
-            <span class="eyebrow">Luxury event design studio</span>
-            <h1>Crafting celebrations with unmistakable elegance.</h1>
-            <p>
-              We design memorable experiences for corporate parties, DJ nights, birthday celebrations,
-              and baby showers—where atmosphere, detail, and guest experience become unforgettable.
-            </p>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-            <div class="hero-actions">
-              <a href="#contact" class="btn btn-primary">Plan My Event</a>
-              <a href="#packages" class="btn btn-secondary">Explore Packages</a>
-            </div>
+img {
+  display: block;
+  max-width: 100%;
+}
 
-            <div class="hero-metrics">
-              <div>
-                <strong>600+</strong>
-                <span>Events curated</span>
-              </div>
-              <div>
-                <strong>14 yrs</strong>
-                <span>Creative expertise</span>
-              </div>
-              <div>
-                <strong>4.9/5</strong>
-                <span>Client rating</span>
-              </div>
-            </div>
-          </div>
+button,
+input,
+textarea {
+  font: inherit;
+}
 
-          <div class="hero-panel scroll-reveal delay-1">
-            <div class="floating-card card-one">
-              <span class="card-badge">Featured</span>
-              <h3>Midnight DJ Experience</h3>
-              <p>Precise soundscapes, immersive lighting, and a party atmosphere that commands the room.</p>
-            </div>
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
 
-            <div class="floating-card card-two">
-              <span class="card-badge badge-alt">Corporate</span>
-              <h3>Executive Signature Night</h3>
-              <p>Brand-forward elegance, polished hosting, and premium guest experience from arrival to finale.</p>
-            </div>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(14px);
+  background: rgba(18, 13, 23, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-            <div class="floating-card card-three">
-              <span class="card-badge badge-soft">Personal</span>
-              <h3>Birthday & Baby Shower</h3>
-              <p>Warm, elevated moments with custom styling that reflect your story beautifully.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  gap: 16px;
+}
 
-      <section class="partner-strip">
-        <div class="container partner-grid">
-          <span>Luxury Planning</span>
-          <span>Venue Styling</span>
-          <span>Audio & Light</span>
-          <span>Guest Experience</span>
-          <span>Custom Decor</span>
-        </div>
-      </section>
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
 
-      <section class="section" id="about">
-        <div class="container section-head">
-          <div>
-            <span class="eyebrow dark">Why Cipher Luxe</span>
-            <h2>Luxury design meets effortless execution.</h2>
-          </div>
-          <p>
-            We bring together artistry, production, and precise planning to deliver events that feel elegant,
-            elevated, and completely custom to your vision.
-          </p>
-        </div>
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  box-shadow: 0 12px 28px rgba(233, 119, 143, 0.38);
+  color: white;
+  font-size: 1.1rem;
+}
 
-        <div class="container about-grid">
-          <div class="about-visual scroll-reveal">
-            <div class="visual-card big-card"></div>
-            <div class="visual-card small-card"></div>
-          </div>
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
 
-          <div class="about-content scroll-reveal delay-1">
-            <div class="feature-list">
-              <div class="feature-item">
-                <div class="icon-wrap">✦</div>
-                <div>
-                  <h3>Tailored event concepts</h3>
-                  <p>Every celebration is designed around your story, guest experience, and desired atmosphere.</p>
-                </div>
-              </div>
+.main-nav a {
+  transition: color 0.2s ease;
+}
 
-              <div class="feature-item">
-                <div class="icon-wrap">✦</div>
-                <div>
-                  <h3>Full-service coordination</h3>
-                  <p>From venue planning and vendor selection to styling and guest flow, we handle the details.</p>
-                </div>
-              </div>
+.main-nav a:hover {
+  color: white;
+}
 
-              <div class="feature-item">
-                <div class="icon-wrap">✦</div>
-                <div>
-                  <h3>Seamless event execution</h3>
-                  <p>We manage the moving parts so you can relax and enjoy your event with complete confidence.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0 26px;
+  font-weight: 700;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
 
-      <section class="section alt-bg" id="events">
-        <div class="container">
-          <div class="section-head center">
-            <span class="eyebrow dark">Our specialties</span>
-            <h2>Celebrations designed for every mood and milestone.</h2>
-          </div>
+.btn:hover {
+  transform: translateY(-2px);
+}
 
-          <div class="event-grid">
-            <article class="event-card event-one scroll-reveal">
-              <div class="event-inner">
-                <span class="event-tag">Corporate</span>
-                <h3>Corporate Party</h3>
-                <p>Elegant event experiences that combine brand identity, guest connection, and premium atmosphere.</p>
-              </div>
-            </article>
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  box-shadow: 0 18px 34px rgba(233, 119, 143, 0.26);
+}
 
-            <article class="event-card event-two scroll-reveal delay-1">
-              <div class="event-inner">
-                <span class="event-tag">Nightlife</span>
-                <h3>DJ Night</h3>
-                <p>High-energy experiences with dramatic lighting, live vibes, and unforgettable musical moments.</p>
-              </div>
-            </article>
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.12);
+}
 
-            <article class="event-card event-three scroll-reveal delay-2">
-              <div class="event-inner">
-                <span class="event-tag">Celebration</span>
-                <h3>Birthday Party</h3>
-                <p>Vibrant floorscapes, custom styling, and playful details that bring every guest into the celebration.</p>
-              </div>
-            </article>
+.nav-button {
+  margin-left: 8px;
+}
 
-            <article class="event-card event-four scroll-reveal delay-3">
-              <div class="event-inner">
-                <span class="event-tag">Family</span>
-                <h3>Baby Shower</h3>
-                <p>Intimate, elegant events with soft styling, heartfelt details, and warm memories to treasure.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+.menu-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+}
 
-      <section class="section process-section">
-        <div class="container">
-          <div class="section-head center">
-            <span class="eyebrow dark">How we work</span>
-            <h2>From idea to unforgettable night.</h2>
-          </div>
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  background: white;
+}
 
-          <div class="process-grid">
-            <div class="step-card scroll-reveal">
-              <span>01</span>
-              <h3>Discovery</h3>
-              <p>We learn your philosophy, guest profile, and the feeling you want your celebration to carry.</p>
-            </div>
-            <div class="step-card scroll-reveal delay-1">
-              <span>02</span>
-              <h3>Design</h3>
-              <p>We build the concept, mood, styling direction, and a plan that reflects your vision perfectly.</p>
-            </div>
-            <div class="step-card scroll-reveal delay-2">
-              <span>03</span>
-              <h3>Production</h3>
-              <p>We coordinate suppliers, timelines, logistics, and technical requirements for a smooth flow.</p>
-            </div>
-            <div class="step-card scroll-reveal delay-3">
-              <span>04</span>
-              <h3>Execution</h3>
-              <p>On the day, we manage every detail so you can enjoy your event without stress or distractions.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 60px;
+}
 
-      <section class="section gallery-section" id="gallery">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <span class="eyebrow dark">Portfolio</span>
-              <h2>Beautiful spaces, unforgettable energy.</h2>
-            </div>
-            <p>
-              From intimate gatherings to glamorous nightlife scenes, every setup is imagined to feel cinematic and deeply personal.
-            </p>
-          </div>
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(16, 11, 18, 0.83), rgba(16, 11, 18, 0.38)),
+    url("https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+  transform: scale(1.06);
+}
 
-          <div class="gallery-grid">
-            <div class="gallery-item large-item item-one scroll-reveal">
-              <div class="gallery-label">Corporate gala</div>
-            </div>
-            <div class="gallery-item item-two scroll-reveal delay-1">
-              <div class="gallery-label">DJ night</div>
-            </div>
-            <div class="gallery-item item-three scroll-reveal delay-2">
-              <div class="gallery-label">Birthday bash</div>
-            </div>
-            <div class="gallery-item item-four scroll-reveal delay-3">
-              <div class="gallery-label">Baby shower</div>
-            </div>
-            <div class="gallery-item item-five scroll-reveal delay-4">
-              <div class="gallery-label">Luxury styling</div>
-            </div>
-          </div>
-        </div>
-      </section>
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16, 11, 18, 0.04), rgba(16, 11, 18, 0.56));
+}
 
-      <section class="section pricing-section" id="packages">
-        <div class="container">
-          <div class="section-head center">
-            <span class="eyebrow dark">Packages</span>
-            <h2>Flexible experiences for every kind of celebration.</h2>
-          </div>
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 48px;
+  min-height: 620px;
+}
 
-          <div class="pricing-grid">
-            <article class="price-card scroll-reveal">
-              <span class="price-badge">Starter</span>
-              <h3>Classic</h3>
-              <p class="price"><strong>$599</strong> <span>/ event</span></p>
-              <ul>
-                <li>Event concept direction</li>
-                <li>Decor planning</li>
-                <li>Theme consultation</li>
-                <li>Guest layout guidance</li>
-              </ul>
-              <a href="#contact" class="btn btn-secondary full-width">Choose Classic</a>
-            </article>
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--soft);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-            <article class="price-card featured scroll-reveal delay-1">
-              <span class="price-badge">Popular</span>
-              <h3>Signature</h3>
-              <p class="price"><strong>$1,299</strong> <span>/ event</span></p>
-              <ul>
-                <li>Full event design and planning</li>
-                <li>Vendor coordination</li>
-                <li>Lighting and sound styling</li>
-                <li>Dedicated event support</li>
-              </ul>
-              <a href="#contact" class="btn btn-primary full-width">Choose Signature</a>
-            </article>
+.eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 18px rgba(242, 213, 141, 0.8);
+}
 
-            <article class="price-card scroll-reveal delay-2">
-              <span class="price-badge">Luxury</span>
-              <h3>Premier</h3>
-              <p class="price"><strong>$2,499</strong> <span>/ event</span></p>
-              <ul>
-                <li>Custom luxury concept</li>
-                <li>VIP guest experience</li>
-                <li>On-site execution team</li>
-                <li>Premium styling & production</li>
-              </ul>
-              <a href="#contact" class="btn btn-secondary full-width">Choose Premier</a>
-            </article>
-          </div>
-        </div>
-      </section>
+.eyebrow.dark {
+  background: rgba(233, 119, 143, 0.08);
+  border-color: rgba(233, 119, 143, 0.14);
+  color: #f7bfd1;
+}
 
-      <section class="section reviews-section" id="reviews">
-        <div class="container">
-          <div class="section-head center">
-            <span class="eyebrow dark">Testimonials</span>
-            <h2>Client experiences worth celebrating.</h2>
-          </div>
+.hero-copy h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3.5rem, 7vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  max-width: 640px;
+  margin-top: 20px;
+}
 
-          <div class="reviews-grid">
-            <article class="review-card scroll-reveal">
-              <div class="stars">★★★★★</div>
-              <p>
-                “Cipher Luxe transformed our corporate celebration into an elegant, unforgettable experience. The details were stunning and every guest felt cared for.”
-              </p>
-              <div class="reviewer">
-                <div class="avatar">A</div>
-                <div>
-                  <strong>Alicia Morgan</strong>
-                  <span>Marketing Director</span>
-                </div>
-              </div>
-            </article>
+.hero-copy p {
+  max-width: 610px;
+  margin-top: 20px;
+  color: rgba(247, 243, 255, 0.8);
+  font-size: 1.08rem;
+}
 
-            <article class="review-card scroll-reveal delay-1">
-              <div class="stars">★★★★★</div>
-              <p>
-                “Our DJ night looked cinematic and felt electric. The lighting, sound, and energy planning were beyond expectations.”
-              </p>
-              <div class="reviewer">
-                <div class="avatar">J</div>
-                <div>
-                  <strong>Jason Reed</strong>
-                  <span>Private Host</span>
-                </div>
-              </div>
-            </article>
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
 
-            <article class="review-card scroll-reveal delay-2">
-              <div class="stars">★★★★★</div>
-              <p>
-                “The baby shower felt incredibly intimate and elegant. Every detail reflected our vision and made the day feel truly magical.”
-              </p>
-              <div class="reviewer">
-                <div class="avatar">R</div>
-                <div>
-                  <strong>Rina Brooks</strong>
-                  <span>Celebration Client</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+.hero-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 42px;
+}
 
-      <section class="section faq-section">
-        <div class="container faq-wrap">
-          <div class="faq-copy scroll-reveal">
-            <span class="eyebrow dark">FAQ</span>
-            <h2>Questions before your next event.</h2>
-          </div>
+.hero-metrics div {
+  min-width: 120px;
+}
 
-          <div class="faq-list scroll-reveal delay-1">
-            <details open>
-              <summary>Do you host both intimate and large-scale celebrations?</summary>
-              <p>Yes. We design everything from intimate family gatherings to large-scale corporate and nightlife productions.</p>
-            </details>
+.hero-metrics strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+}
 
-            <details>
-              <summary>Can we customize the theme and style?</summary>
-              <p>Absolutely. Every event is fully personalized around your aesthetics, colors, guest experience, and vision.</p>
-            </details>
+.hero-metrics span {
+  font-size: 0.88rem;
+  color: rgba(247, 243, 255, 0.7);
+}
 
-            <details>
-              <summary>Do you coordinate vendors and logistics?</summary>
-              <p>Yes. We manage vendor communication, venue requirements, production details, and on-site coordination.</p>
-            </details>
+.hero-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
+  padding: 10px 0 30px;
+}
 
-            <details>
-              <summary>How far in advance should I book?</summary>
-              <p>We suggest booking 6–12 weeks in advance for most events, although larger or peak-season events may need more planning time.</p>
-            </details>
-          </div>
-        </div>
-      </section>
+.floating-card {
+  width: min(100%, 390px);
+  padding: 22px 22px 18px;
+  border-radius: 26px;
+  background: rgba(16, 11, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
 
-      <section class="section contact-section" id="contact">
-        <div class="container contact-box scroll-reveal">
-          <div class="contact-copy">
-            <span class="eyebrow dark">Book your event</span>
-            <h2>Let’s create the celebration your guests won’t forget.</h2>
-            <p>
-              Share your vision and we’ll craft an event concept that feels luxurious, personal, and flawlessly executed.
-            </p>
+.card-one {
+  transform: translateX(-12px);
+}
 
-            <div class="contact-meta">
-              <div>
-                <strong>Email</strong>
-                <span>hello@cipherluxe.com</span>
-              </div>
-              <div>
-                <strong>Phone</strong>
-                <span>+1 (555) 390-2418</span>
-              </div>
-            </div>
-          </div>
+.card-two {
+  transform: translateX(18px);
+}
 
-          <form class="booking-form" id="bookingForm">
-            <div class="field-row">
-              <label>
-                <span>Name</span>
-                <input type="text" placeholder="Your full name" required />
-              </label>
-              <label>
-                <span>Email</span>
-                <input type="email" placeholder="Your email" required />
-              </label>
-            </div>
+.card-three {
+  transform: translateX(-8px);
+}
 
-            <div class="field-row">
-              <label>
-                <span>Event type</span>
-                <input type="text" placeholder="Corporate Party, DJ Night, etc." required />
-              </label>
-              <label>
-                <span>Budget</span>
-                <input type="text" placeholder="$500 - $5,000" />
-              </label>
-            </div>
+.card-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffe1d5;
+  background: rgba(255, 155, 112, 0.12);
+  border: 1px solid rgba(255, 155, 112, 0.2);
+}
 
-            <label>
-              <span>Event details</span>
-              <textarea placeholder="Tell us about your event date, venue, and vision..." required></textarea>
-            </label>
+.badge-alt {
+  color: #d8ebff;
+  background: rgba(108, 162, 255, 0.12);
+  border-color: rgba(108, 162, 255, 0.2);
+}
 
-            <button type="submit" class="btn btn-primary full-width">Send Request</button>
-          </form>
-        </div>
-      </section>
-    </main>
+.badge-soft {
+  color: #d4fce8;
+  background: rgba(118, 226, 183, 0.12);
+  border-color: rgba(118, 226, 183, 0.2);
+}
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="brand footer-brand">
-          <span class="brand-mark">C</span>
-          <span class="brand-text">Cipher Luxe</span>
-        </div>
-        <p>© 2026 Cipher Luxe. Crafted for unforgettable celebrations.</p>
-        <div class="socials">
-          <a href="#" aria-label="Instagram">Instagram</a>
-          <a href="#" aria-label="Facebook">Facebook</a>
-          <a href="#" aria-label="Pinterest">Pinterest</a>
-        </div>
-      </div>
-    </footer>
+.floating-card h3 {
+  margin-top: 14px;
+  font-size: 1.6rem;
+}
 
-    <a
-      class="whatsapp-float"
-      href="https://wa.me/15553902418"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp"
-    >
-      WhatsApp
-    </a>
+.floating-card p {
+  margin-top: 10px;
+  color: rgba(247, 243, 255, 0.74);
+}
 
-    <script src="script.js"></script>
-  </body>
-</html>
+.partner-strip {
+  background: rgba(255, 255, 255, 0.018);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 18px 0;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: rgba(247, 243, 255, 0.7);
+}
+
+.section {
+  padding: 110px 0;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 42px;
+}
+
+.section-head.center {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-head h2 {
+  margin-top: 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.section-head p {
+  max-width: 560px;
+  color: rgba(247, 243, 255, 0.74);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  min-height: 520px;
+}
+
+.visual-card {
+  position: absolute;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.big-card {
+  inset: 0 40px 40px 0;
+  background: url("https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+}
+
+.small-card {
+  width: 230px;
+  height: 230px;
+  right: 0;
+  bottom: 0;
+  background: url("https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+}
+
+.feature-list {
+  display: grid;
+  gap: 24px;
+}
+
+.feature-item {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.icon-wrap {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(233, 119, 143, 0.18), rgba(255, 155, 112, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.4rem;
+}
+
+.feature-item h3 {
+  margin-bottom: 8px;
+  font-size: 1.38rem;
+}
+
+.feature-item p {
+  color: rgba(247, 243, 255, 0.72);
+}
+
+.alt-bg {
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.event-card {
+  position: relative;
+  display: flex;
+  align-items: end;
+  min-height: 420px;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16, 11, 18, 0.10), rgba(16, 11, 18, 0.74));
+}
+
+.event-one {
+  background: url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+}
+
+.event-two {
+  background: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+}
+
+.event-three {
+  background: url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+}
+
+.event-four {
+  background: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+}
+
+.event-inner {
+  position: relative;
+  z-index: 1;
+  padding: 22px;
+}
+
+.event-tag {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-card h3 {
+  margin-top: 16px;
+  font-size: 2rem;
+}
+
+.event-card p {
+  margin-top: 8px;
+  color: rgba(247, 243, 255, 0.78);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.step-card {
+  padding: 28px 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.step-card span {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(233, 119, 143, 0.16), rgba(255, 155, 112, 0.12));
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.step-card h3 {
+  margin-top: 18px;
+  font-size: 1.5rem;
+}
+
+.step-card p {
+  margin-top: 10px;
+  color: rgba(247, 243, 255, 0.72);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  min-height: 320px;
+  border-radius: 26px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.gallery-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16, 11, 18, 0.08), rgba(16, 11, 18, 0.68));
+}
+
+.large-item {
+  grid-row: span 2;
+  min-height: 500px;
+}
+
+.item-one {
+  background-image: url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1100&q=80");
+}
+
+.item-two {
+  background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80");
+}
+
+.item-three {
+  background-image: url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80");
+}
+
+.item-four {
+  background-image: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80");
+}
+
+.item-five {
+  background-image: url("https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=900&q=80");
+}
+
+.gallery-label {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  z-index: 1;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.price-card {
+  padding: 28px 22px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.price-card.featured {
+  background: linear-gradient(180deg, rgba(233, 119, 143, 0.08), rgba(255, 255, 255, 0.04));
+  border-color: rgba(233, 119, 143, 0.28);
+  transform: scale(1.02);
+}
+
+.price-badge {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f7dd9d;
+  background: rgba(242, 213, 141, 0.12);
+  border: 1px solid rgba(242, 213, 141, 0.18);
+}
+
+.price-card h3 {
+  margin-top: 18px;
+  font-size: 1.8rem;
+}
+
+.price {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.price strong {
+  font-size: 3rem;
+  line-height: 0.9;
+}
+
+.price span {
+  color: rgba(247, 243, 255, 0.7);
+}
+
+.price-card ul {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 26px;
+  color: rgba(247, 243, 255, 0.74);
+}
+
+.price-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.price-card li::before {
+  content: "•";
+  color: var(--primary-strong);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.review-card {
+  padding: 26px 24px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stars {
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+.review-card p {
+  margin-top: 18px;
+  color: rgba(247, 243, 255, 0.72);
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  font-weight: 800;
+  color: white;
+}
+
+.reviewer strong {
+  display: block;
+}
+
+.reviewer span {
+  color: rgba(247, 243, 255, 0.7);
+  font-size: 0.82rem;
+}
+
+.faq-wrap {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.faq-copy h2 {
+  margin-top: 14px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+}
+
+.faq-list {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-list details {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 0 18px;
+}
+
+.faq-list summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 0;
+  font-weight: 600;
+  position: relative;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.faq-list details[open] summary::after {
+  content: "−";
+}
+
+.faq-list p {
+  padding: 0 0 18px;
+  color: rgba(247, 243, 255, 0.72);
+}
+
+.contact-box {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 36px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, rgba(233, 119, 143, 0.14), rgba(255, 155, 112, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.contact-copy h2 {
+  margin-top: 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.contact-copy p {
+  margin-top: 16px;
+  color: rgba(247, 243, 255, 0.76);
+}
+
+.contact-meta {
+  display: grid;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.contact-meta div {
+  display: grid;
+  gap: 4px;
+}
+
+.contact-meta strong {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.booking-form {
+  display: grid;
+  gap: 18px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--soft);
+  letter-spacing: 0.04em;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(247, 243, 255, 0.46);
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(255, 155, 112, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 155, 112, 0.12);
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.site-footer {
+  padding: 30px 0 50px;
+  background: rgba(15, 10, 18, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-size: 0.78rem;
+}
+
+.site-footer p {
+  color: rgba(247, 243, 255, 0.68);
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+  color: rgba(247, 243, 255, 0.8);
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 146px;
+  min-height: 54px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #25d366, #1ebd5b);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 20px 40px rgba(37, 211, 102, 0.35);
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+@media (max-width: 1024px) {
+  .hero-grid,
+  .about-grid,
+  .faq-wrap,
+  .contact-box {
+    grid-template-columns: 1fr;
+  }
+
+  .event-grid,
+  .process-grid,
+  .pricing-grid,
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid,
+  .partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .large-item {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 78px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 18px;
+    border-radius: 18px;
+    background: rgba(18, 13, 23, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow);
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .event-grid,
+  .process-grid,
+  .pricing-grid,
+  .reviews-grid,
+  .field-row,
+  .gallery-grid,
+  .partner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+  }
+
+  .floating-card {
+    width: 100%;
+    transform: none;
+  }
+
+  .contact-box {
+    padding: 24px 18px;
+  }
+
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    min-width: 132px;
+  }
+}
