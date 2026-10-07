@@ -6,9 +6,9 @@
   <title>CIPHER LUXE | Haute Event Architecture</title>
   
   <!-- Elite Cinematic Typography -->
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
@@ -32,7 +32,6 @@
       --font-display: 'Cinzel', serif;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
       --container: 1240px;
-      --accent-metal: var(--luxury-gold);
     }
 
     * {
@@ -168,6 +167,7 @@
     .main-nav a:hover { color: var(--luxury-gold); }
     .main-nav a:hover::after { width: 100%; }
 
+    /* Ultra Luxe Button Base */
     .btn-luxe {
       display: inline-flex;
       align-items: center;
@@ -180,7 +180,6 @@
       letter-spacing: 0.2em;
       position: relative;
       overflow: hidden;
-      z-index: 1;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-luxe-primary {
@@ -228,30 +227,21 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background: #060307;
     }
     .hero-video-wrapper video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.35;
-      filter: contrast(110%) brightness(85%);
+      opacity: 0.24;
+      transform: scale(1.05);
       transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    #liquid-ambient-canvas {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      mix-blend-mode: screen;
-      pointer-events: none;
     }
 
     .hero-tint-matrix {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: linear-gradient(to bottom, rgba(7,4,8,0.2), var(--bg) 95%);
+      background: linear-gradient(to bottom, rgba(7,4,8,0.4), var(--bg) 95%);
       pointer-events: none;
     }
 
@@ -265,11 +255,7 @@
       width: 100%;
     }
 
-    /* Vibe Color Configuration Mapping rules */
-    [data-active-luxe="dj"] { --accent-metal: var(--luxury-rosegold); }
-    [data-active-luxe="live"] { --accent-metal: var(--luxury-gold); }
-    [data-active-luxe="gala"] { --accent-metal: var(--luxury-platinum); }
-
+    /* Typography Entrance States */
     .hero-copy {
       animation: maskUpReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -283,11 +269,10 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.35em;
-      color: var(--accent-metal);
+      color: var(--luxury-gold);
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      transition: color 0.5s ease;
     }
     .eyebrow-luxury::before {
       content: "";
@@ -332,15 +317,15 @@
 
     .hud-atmosphere-selector {
       position: absolute;
-      top: -120px;
+      top: 0;
       right: 0;
       z-index: 40;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      background: rgba(12, 8, 14, 0.65);
+      background: rgba(12, 8, 14, 0.4);
       padding: 24px 16px;
-      border-radius: 24px;
+      border-radius: 0 0 30px 30px;
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(30px);
     }
@@ -358,7 +343,34 @@
       border: 1px solid transparent;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hud-trigger .orbit-indicator {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
+    .hud-trigger.active {
+      color: var(--luxury-gold);
+      border-color: var(--glass-border);
+      background: rgba(255,255,255,0.03);
+    }
+  </style>
+</head>
+<body>
+    <!-- Loading Shutter -->
+    <div id="aperture-shutter">
+      <div class="shutter-logo">CIPHER LUXE</div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">
+          <div class="brand-crest"></div>
+          CIPHER LUXE
+        </div>
+        <nav class="main-nav">
+          <a href="#">Aesthetics</a>
+          <a href="#">Philosophy</a>
+          <a href="#">Portfolio</a>
+          <a href="#">Contact</a>
+        </nav>
+        <button class="btn-luxe btn-luxe-outline">Enquire Now</button>
+      </div>
+    </header>
+
+    <main
