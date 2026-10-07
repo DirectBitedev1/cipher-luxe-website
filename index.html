@@ -29,49 +29,87 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; background-color: var(--bg); }
-        body { font-family: var(--font-sans); background: var(--bg); color: var(--text-pure); line-height: 1.62; overflow-x: hidden; }
+        body { font-family: var(--font-sans); background: var(--bg); color: var(--text-pure); line-height: 1.62; overflow-x: hidden; letter-spacing: -0.01em; }
         a { color: inherit; text-decoration: none; }
-
+        
         .container { width: min(var(--container), calc(100% - 48px)); margin: 0 auto; }
 
-        /* Loading Shutter */
+        /* Cinematic Aperture Shutter */
         #aperture-shutter {
             position: fixed; inset: 0; background: #000; z-index: 1000;
             display: flex; align-items: center; justify-content: center;
             transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
         }
         #aperture-shutter.open { transform: translateY(-100%); }
+        .shutter-logo {
+            font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.3em; color: var(--luxury-gold);
+            animation: pulseReveal 2.5s ease-in-out forwards;
+        }
+        @keyframes pulseReveal {
+            0% { opacity: 0; letter-spacing: 0.1em; filter: blur(8px); }
+            50% { opacity: 1; filter: blur(0); }
+            100% { opacity: 0; letter-spacing: 0.3em; }
+        }
 
-        /* Header */
+        /* Architectural Header */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 90; border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(20px); background: rgba(7, 4, 8, 0.2); }
-        .nav-wrap { display: flex; align-items: center; justify-content: space-between; min-height: 90px; }
-        .brand { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; font-size: 1.05rem; }
-        .main-nav { display: flex; gap: 40px; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-muted); }
-        .main-nav a:hover { color: var(--luxury-gold); }
+        .nav-wrap { display: flex; align-items: center; justify-content: space-between; min-height: 100px; }
+        .brand { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
+        .brand-crest { width: 20px; height: 20px; border: 1px solid var(--luxury-gold); transform: rotate(45deg); position: relative; }
+        .brand-crest::after { content: ''; position: absolute; inset: 4px; background: var(--luxury-gold); }
 
-        /* Hero */
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 100px; }
-        .hero-copy h1 { font-family: var(--font-display); font-size: clamp(3.2rem, 5.8vw, 5.8rem); line-height: 0.95; margin-top: 24px; }
-        .hero-copy h1 span { display: block; font-weight: 900; font-style: italic; background: linear-gradient(to right, #ffffff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .main-nav { display: flex; gap: 40px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
+        .main-nav a { position: relative; transition: 0.4s; }
+        .main-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--luxury-gold); transition: 0.4s; }
+        .main-nav a:hover { color: var(--text-pure); }
+        .main-nav a:hover::after { width: 100%; }
+
+        /* Hero Arena */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 80px; }
+        .hero-tint { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(7,4,8,0.2), var(--bg)); z-index: 2; }
         
-        .btn-luxe { display: inline-flex; align-items: center; padding: 0 32px; min-height: 52px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; border: 1px solid var(--luxury-gold); color: var(--luxury-gold); margin-top: 40px; transition: 0.3s; }
-        .btn-luxe:hover { background: var(--luxury-gold); color: #000; }
+        .hero-copy { position: relative; z-index: 10; animation: revealUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes revealUp {
+            0% { opacity: 0; transform: translateY(50px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--luxury-gold); margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+        .eyebrow::before { content: ''; width: 40px; height: 1px; background: currentColor; }
+
+        .hero-copy h1 { font-family: var(--font-display); font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 0.9; font-weight: 400; }
+        .hero-copy h1 span { display: block; font-weight: 900; font-style: italic; background: linear-gradient(to right, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero-copy p { max-width: 560px; color: var(--text-muted); font-size: 1.1rem; margin-top: 30px; font-weight: 300; }
+
+        /* Luxe Buttons */
+        .btn-luxe {
+            display: inline-flex; align-items: center; margin-top: 50px; padding: 18px 45px;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em;
+            background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold));
+            color: #000; position: relative; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-luxe:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(226, 201, 149, 0.2); }
     </style>
 </head>
 <body>
 
     <div id="aperture-shutter">
-        <div class="shutter-logo" style="font-family: 'Cinzel'; color: #e2c995; letter-spacing: 0.3em;">CIPHER LUXE</div>
+        <div class="shutter-logo">CIPHER LUXE</div>
     </div>
 
     <header class="site-header">
         <div class="container">
             <nav class="nav-wrap">
-                <div class="brand">CIPHER LUXE</div>
+                <div class="brand">
+                    <div class="brand-crest"></div>
+                    CIPHER LUXE
+                </div>
                 <div class="main-nav">
                     <a href="#philosophy">Philosophy</a>
                     <a href="#portfolio">Portfolio</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#curation">Curation</a>
+                    <a href="#inquiry">Inquiry</a>
                 </div>
             </nav>
         </div>
@@ -79,22 +117,25 @@
 
     <main>
         <section class="hero">
+            <div class="hero-tint"></div>
             <div class="container">
                 <div class="hero-copy">
-                    <div class="eyebrow-luxury" style="color: var(--luxury-gold); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;">Haute Event Architecture</div>
+                    <div class="eyebrow">Haute Event Architecture</div>
                     <h1>Designing <span>Eternal Moments</span></h1>
-                    <p style="max-width: 500px; color: var(--text-muted); margin-top: 20px;">We architect high-concept environments for the world's most discerning individuals.</p>
-                    <a href="#contact" class="btn-luxe">Inquire Now</a>
+                    <p>We craft immersive, cinematic environments for global icons and discerning private clients. Experience the intersection of architecture and ephemeral art.</p>
+                    <a href="#inquiry" class="btn-luxe">Begin Exploration</a>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Orchestrate the cinematic entrance
             setTimeout(() => {
-                document.getElementById('aperture-shutter').classList.add('open');
-            }, 1500);
+                const shutter = document.getElementById('aperture-shutter');
+                if(shutter) shutter.classList.add('open');
+            }, 2200);
         });
     </script>
 </body>
