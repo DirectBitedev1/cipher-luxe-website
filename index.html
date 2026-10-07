@@ -5,108 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIPHER LUXE | Haute Event Architecture</title>
     
-    <!-- Ultra Luxe Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg: #070408; --bg-matte: #0c080e; --text-pure: #ffffff; --text-muted: #9e93a7;
             --luxury-gold: #e2c995; --luxury-gold-deep: #bfa36b; --glass-border: rgba(255, 255, 255, 0.05);
             --font-display: 'Cinzel', serif; --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --container: 1200px;
+            --container: 1240px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; background-color: var(--bg); }
         body { font-family: var(--font-sans); background: var(--bg); color: var(--text-pure); line-height: 1.6; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+        a { text-decoration: none; color: inherit; transition: 0.4s; }
         img { max-width: 100%; height: auto; display: block; filter: grayscale(20%); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .container { width: min(var(--container), 90%); margin: 0 auto; }
+        .container { width: min(var(--container), 92%); margin: 0 auto; }
 
-        /* Cinematic Loading Shutter */
+        /* HIGH QUALITY TRANSITION SHUTTER */
         #aperture-shutter {
             position: fixed; inset: 0; background: #000; z-index: 1000;
             display: flex; align-items: center; justify-content: center;
-            transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+            transition: transform 1.5s cubic-bezier(0.9, 0, 0.1, 1);
         }
         #aperture-shutter.open { transform: translateY(-100%); }
-        .shutter-logo { font-family: var(--font-display); color: var(--luxury-gold); letter-spacing: 0.5em; font-size: 1.5rem; animation: pulse 2s infinite alternate; }
-        @keyframes pulse { from { opacity: 0.5; } to { opacity: 1; } }
+        .shutter-content { text-align: center; }
+        .shutter-logo-large {
+            font-family: var(--font-display); font-size: clamp(2rem, 10vw, 8rem);
+            color: var(--luxury-gold); text-transform: uppercase; font-weight: 900;
+            letter-spacing: 0.1em; opacity: 0; transform: scale(0.95); filter: blur(10px);
+            animation: luxuryReveal 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .shutter-subtext {
+            font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.8em;
+            text-transform: uppercase; margin-top: 20px; opacity: 0;
+            animation: fadeIn 1.5s ease-out 1.2s forwards;
+        }
+        @keyframes luxuryReveal {
+            0% { opacity: 0; transform: scale(0.95); letter-spacing: 0.1em; filter: blur(10px); }
+            40% { opacity: 1; filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); letter-spacing: 0.4em; }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
 
-        /* Sticky Header */
-        .site-header { position: sticky; top: 0; z-index: 90; background: rgba(7,4,8,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 90px; }
-        .brand { font-family: var(--font-display); letter-spacing: 0.3em; font-weight: 700; font-size: 1.2rem; }
-        .main-nav a { margin-left: 35px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
+        /* SITE HEADER */
+        .site-header { position: sticky; top: 0; z-index: 90; background: rgba(7,4,8,0.85); backdrop-filter: blur(25px); border-bottom: 1px solid var(--glass-border); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 100px; }
+        .brand { font-family: var(--font-display); letter-spacing: 0.3em; font-weight: 700; text-transform: uppercase; }
+        .main-nav a { margin-left: 35px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
         .main-nav a:hover { color: var(--luxury-gold); }
 
-        /* Hero Arena */
-        .hero { padding: 150px 0 100px; text-align: center; }
-        .eyebrow { font-size: 0.7rem; letter-spacing: 0.4em; color: var(--luxury-gold); text-transform: uppercase; margin-bottom: 20px; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 0.95; }
-        .hero h1 span { display: block; font-style: italic; color: var(--luxury-gold); font-weight: 900; }
+        /* HERO SECTION */
+        .hero { padding: 180px 0 100px; text-align: center; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; margin-bottom: 30px; }
+        .hero span { display: block; font-style: italic; color: var(--luxury-gold); font-weight: 900; }
 
-        /* Services Grid */
+        /* SERVICES GRID */
         .services { padding: 100px 0; background: var(--bg-matte); }
-        .section-title { font-family: var(--font-display); text-align: center; margin-bottom: 60px; letter-spacing: 0.3em; text-transform: uppercase; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .service-card { padding: 50px 40px; border: 1px solid var(--glass-border); transition: 0.5s; position: relative; overflow: hidden; }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--luxury-gold); background: rgba(255,255,255,0.02); }
-        .service-card h3 { font-family: var(--font-display); color: var(--luxury-gold); margin-bottom: 15px; letter-spacing: 0.1em; }
-        .service-card p { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
+        .section-title { font-family: var(--font-display); text-align: center; margin-bottom: 70px; letter-spacing: 0.4em; text-transform: uppercase; font-size: 1.2rem; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .service-card { padding: 60px 45px; border: 1px solid var(--glass-border); transition: 0.5s; background: rgba(255,255,255,0.01); }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--luxury-gold); background: rgba(255,255,255,0.03); }
+        .service-card h3 { font-family: var(--font-display); color: var(--luxury-gold); margin-bottom: 20px; letter-spacing: 0.1em; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; }
 
-        /* Portfolio Gallery */
+        /* PORTFOLIO GALLERY */
         .gallery { padding: 100px 0; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px; }
         .gallery-item { position: relative; overflow: hidden; border: 1px solid var(--glass-border); }
-        .item-lg { grid-column: span 8; height: 500px; }
-        .item-sm { grid-column: span 4; height: 500px; }
-        .item-md { grid-column: span 6; height: 400px; }
+        .item-lg { grid-column: span 8; height: 550px; }
+        .item-sm { grid-column: span 4; height: 550px; }
+        .item-md { grid-column: span 6; height: 450px; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
-        .img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,4,8,0.9), transparent); display: flex; align-items: flex-end; padding: 30px; opacity: 0; transition: 0.4s; }
+        .gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
+        .img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,4,8,0.9), transparent); display: flex; align-items: flex-end; padding: 40px; opacity: 0; transition: 0.5s; }
         .gallery-item:hover .img-overlay { opacity: 1; }
+        .img-overlay span { font-family: var(--font-display); color: var(--luxury-gold); letter-spacing: 0.2em; text-transform: uppercase; }
 
-        /* Inquiry Form */
+        /* CONTACT & WHATSAPP */
         .inquiry { padding: 100px 0; background: var(--bg-matte); }
-        .inquiry-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        .inquiry-form input, .inquiry-form textarea {
-            background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
-            padding: 20px; color: #fff; font-family: var(--font-sans); outline: none; transition: 0.3s;
-        }
+        .inquiry-form { max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px; }
+        .inquiry-form input, .inquiry-form textarea { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; color: #fff; font-family: inherit; outline: none; }
         .inquiry-form input:focus { border-color: var(--luxury-gold); }
-        .btn-submit {
-            background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold)); color: #000; 
-            padding: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; border: none; cursor: pointer;
-        }
+        .btn-submit { background: linear-gradient(135deg, var(--luxury-gold-deep), var(--luxury-gold)); color: #000; padding: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; border: none; cursor: pointer; }
+        .whatsapp-float { position: fixed; bottom: 35px; right: 35px; z-index: 100; background: #25d366; color: #fff; padding: 18px 28px; border-radius: 50px; font-weight: 700; box-shadow: 0 15px 35px rgba(0,0,0,0.4); font-size: 0.85rem; }
 
-        /* Footer & Socials */
-        .site-footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--glass-border); }
-        .social-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; }
+        /* FOOTER */
+        .site-footer { padding: 100px 0; text-align: center; border-top: 1px solid var(--glass-border); }
+        .social-links { display: flex; justify-content: center; gap: 50px; margin-bottom: 40px; }
+        .social-links a { text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.8rem; color: var(--text-muted); }
         .social-links a:hover { color: var(--luxury-gold); }
-        
-        /* Floating WhatsApp */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; z-index: 100;
-            background: #25d366; color: #fff; padding: 15px 25px; border-radius: 50px;
-            font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
-            display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .gallery-grid { display: flex; flex-direction: column; }
-            .item-lg, .item-sm, .item-md { height: 300px; }
+            .item-lg, .item-sm, .item-md { height: 350px; }
             .main-nav { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="aperture-shutter"><div class="shutter-logo">CIPHER LUXE</div></div>
+    <!-- LUXURY SHUTTER -->
+    <div id="aperture-shutter">
+        <div class="shutter-content">
+            <div class="shutter-logo-large">CIPHER LUXE</div>
+            <div class="shutter-subtext">Haute Event Architecture</div>
+        </div>
+    </div>
 
+    <!-- WHATSAPP ENQUIRY -->
     <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float" target="_blank">WHATSAPP ENQUIRY</a>
 
     <header class="site-header"><div class="container"><nav class="nav-wrap">
-        <div
+        <div class="brand">CIPHER LUXE</div>
+        <div class="main-nav">
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#inquiry">Inquiry</a>
+            <a href="#footer">Follow</a>
+        </div>
+    </nav></div></header>
+
+    <main>
+        <section class="hero"><div class="container">
+            <div style="font-size:0.75rem; letter-spacing:0.4em; color:var(--luxury-gold); text-transform:uppercase; margin-bottom:20px;">Private Curation</div>
+            <h1>Designing <span>Eternal Moments</span></h1>
+        </div></section>
+
+        <section id="services" class="services"><div class="container">
+            <h2 class="section-title">Our Curation</h2>
+            <div class="service-grid">
+                <div class="service-card"><h3>DJ Midnight</h3><p>Proprietary immersive soundscapes for the late-night elite.</p></div>
+                <div class="service-card"><h3>Live Singing</h3><p>Cinematic vocal arrangements performed by world-class artists.</p></div>
+                <div class="service-card"><h3>Corporate Party</h3><p>Architectural design for high-profile business summits.</p></div>
+                <div class="service-card"><h3>Birthday Party</h3><p>Ultra-private grand celebrations tailored to the individual.</p></div>
+                <div class="service-card"><h3>Home Decoration</h3><p>Transforming residences into bespoke high-art environments.</p></div>
+                <div class="service-card"><h3>Lighting Design</h3><p>Advanced atmospheric illumination and projection mapping.</p></div>
+            </div>
+        </div></section>
+
+        <section id="portfolio" class="gallery"><div class="container">
+            <h2 class="section-title">Visual Portfolio</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item item-lg">
+                    <img src="https://images.unsplash.com/photo-1514525253361-b83f859b73c0?q=80&w=1200" alt="DJ Party">
+                    <div class="img-overlay"><span>DJ Midnight Experience</span></div>
+                </div>
+                <div class="gallery-item item-sm">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt="Lighting">
+                    <div class="img-overlay"><span>Atmospheric Lighting</span></div>
+                </div>
+                <div class="gallery-item item-md">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=800" alt="Gala">
+                    <div class="img-overlay"><span>Corporate Architecture</span></div>
+                </div>
+                <div class="gallery-item item-md">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800" alt="Singing">
+                    <div class="img-overlay"><span>Live Vocalist Sets</span></div>
+                </div>
+            </div>
+        </div></section>
+
+        <section id="inquiry" class="inquiry"><div class="container">
+            <h2 class="section-title">Secure An Inquiry</h2>
+            <form class="inquiry-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="4" placeholder="Detail the nature of your request"></textarea>
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+            </form>
+        </div></section>
+    </main>
+
+    <footer id="footer" class="site-footer"><div class="container">
+        <div class="social-links">
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">X (Twitter)</a>
+        </div>
+        <p style="font-size:0.65rem; color:var(--text-muted); letter-spacing:0.2em;">© 2024 CIPHER LUXE. ALL RIGHTS RESERVED.</p>
+    </div></footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('aperture-shutter').classList.add('open');
+            }, 2800);
+        });
+    </script>
+</body>
+</html>
